@@ -3,8 +3,8 @@
 namespace App\Services\Mail;
 
 use App\Services\Config;
-use Postal\SendMessage;
 use Postal\Client;
+use Postal\SendMessage;
 
 
 class Postal extends Base
@@ -16,10 +16,10 @@ class Postal extends Base
     public function __construct()
     {
         $this->config = $this->getConfig();
-        $this->client = new Client($this->config['host'],$this->config['key']);
+        $this->client = new Client($this->config['host'], $this->config['key']);
         $this->message = new SendMessage($this->client);
         $this->message->sender($this->config['sender']); # 发件邮箱
-        $this->message->from($this->config['name']. ' <' . $this->config['sender'] . '>'); # 发件人
+        $this->message->from($this->config['name'] . ' <' . $this->config['sender'] . '>'); # 发件人
         $this->message->replyTo($this->config['sender']);
     }
 
@@ -40,7 +40,7 @@ class Postal extends Base
         $this->message->plainBody($text);
         $this->message->htmlBody($text);
         foreach ($files as $file) {
-            $this->message->attach(basename($file),'text/plain',$file);
+            $this->message->attach(basename($file), 'text/plain', $file);
         }
         return $this->message->send();
     }
