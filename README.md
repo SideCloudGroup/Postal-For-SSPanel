@@ -9,7 +9,12 @@
 
 ## 安装
 
-下载源码并解压，将src和vendor目录下的所有文件复制到SSPanel根目录下
+下载源码并解压，将目录下的所有文件复制到SSPanel根目录下 \
+在SSPanel网站根目录下执行以下命令
+
+```bash
+composer require postal/postal
+```
 
 ## 配置
 
@@ -22,7 +27,7 @@ $_ENV['postal_sender'] = ''; // 发件人邮箱
 $_ENV['postal_name']   = ''; // 发件人名称
 ```
 
-然后修改发信驱动
+并修改发信驱动
 
 ```php 
 $_ENV['mailDriver']      = 'postal';
